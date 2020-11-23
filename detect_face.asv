@@ -1,0 +1,23 @@
+% Function to detect image
+% and write(save) for further
+% processing
+function [f1,f2,f3]=detect_face(I)
+
+    % Call to capture face to capture image
+    %capture_face();
+    %I=imread('smile.jpg');
+    % imshow(I);
+    
+    % Classifier based on Viola-Jones algorithm for face detection
+    detector = vision.CascadeObjectDetector;
+    BB = step(detector,I);
+    % Preprocessing
+    for i = 1:size(BB,1)
+        J= imcrop(I,BB(i,:));
+    end
+    %disp(size(J));
+    J=imresize(J,[284,284]);
+    imwrite(J,'i.jpg');% Saving the cropped face from the entire image
+    [i1,i2,i3]=detect_facialfeature(J);
+    f1=feature_extraction(i3);
+end
