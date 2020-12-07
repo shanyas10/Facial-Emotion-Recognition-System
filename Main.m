@@ -1,5 +1,4 @@
 
-%I=imread('C:\Program Files\MATLAB\R2014b\toolbox\vision\visiondata\cohn-kanade\train\S052\004\S052_004_00115717.png');
 clc;
 capture_face();
 I=imread('i.jpg');
